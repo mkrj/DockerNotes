@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  redis:
+    image: redis:5
+    restart: 'no'
+    volumes:
+      - /mnt/c/docker/redis5:/data
+    ports:
+      - '6379:6379'
+  mongo:
+    image: mongo:4.0-xenial
+    restart: 'no'
+    volumes:
+      - /mnt/c/docker/mongo4:/data/db
+    ports:
+      - '27017:27017'
+    command: --bind_ip 0.0.0.0
+  mysql:
+    image: mysql:5.7
+    restart: 'no'
+    environment:
+      MYSQL_ROOT_PASSWORD: '123456'
+    volumes:
+      - /mnt/c/docker/mysql57:/var/lib/mysql
+    ports: 
+      - '3306:3306'
